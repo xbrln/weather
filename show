@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+
+<?php
+
+require __DIR__.'/vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use App\Weather\WeatherCommand;
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$app = new Application('Weather app', '1.0');
+
+$app->add(new WeatherCommand());
+
+$app->run();

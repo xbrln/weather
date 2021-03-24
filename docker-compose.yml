@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  php:
+    container_name: weather-php
+    build: .
+    volumes:
+      - .:/var/www/html

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#Use php-cs-fixer for changed files
+CHANGED_FILES=$(git diff --cached --name-only --diff-filter=ACM -- '*.php')
+if [ -n "$CHANGED_FILES" ]; then
+    docker-compose run php vendor/bin/php-cs-fixer fix $CHANGED_FILES;
+    git add $CHANGED_FILES;
+fi
+
+./contrib/run-tests.sh
